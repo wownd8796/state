@@ -1,11 +1,9 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react'
 
 const Main = () => {
   return (
-    <div>
-      <p>React State & Props</p>
-    </div>
-  );
-};
-export default Main;
+    <h1>React State & Props</h1>
+  )
+}
+
+export default Main

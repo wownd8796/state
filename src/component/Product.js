@@ -1,25 +1,35 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, {useState} from 'react'
+import p_data from '../data/p_data.json';
+import Item from './Item';
 
 const Product = () => {
-  return (
-    <div>
-      <div>
-        <img src="./shirts.jpg"></img>
-        <p>
-          ADIDAS STAN SMITH <br />
-          $160
-        </p>
-      </div>
-      <div>
-        <img src="./shoes.jpg"></img>
-        <p>
-          ADIDAS STAN SMITH <br />
-          $160
-        </p>
-      </div>
-    </div>
-  );
-};
+  let [title,setTitle] = useState(10000);
+  
+  
+  
+  let modal = (n)=>{
+    const elModal = document.querySelector('.modal');
+    elModal.classList.add('active');
+    setTitle(n.title);
 
-export default Product;
+    elModal.onclick = ()=>{
+        elModal.classList.remove('active');
+    }
+  }
+
+  return (
+    <article className='list'>
+        <h2>Product</h2>
+        <div>
+            {
+                p_data.data.map((res,idx)=>{
+                   return <Item key={res.id} item={res}  fn={modal}/>
+                })
+            }
+        </div>
+        <p className="modal"> {title} </p>
+    </article>
+  )
+}
+
+export default Product
